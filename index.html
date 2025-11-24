@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | 鈴木 翔太</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts - Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSSリセットと共通スタイル */
+        :root {
+            --color-primary: #007bff; /* 鮮やかな青 */
+            --color-secondary: #0056b3; /* 濃い青 (ホバー用) */
+            --color-text: #333333; /* 標準的なテキスト色 */
+            --color-background: #f8f9fa; /* 薄いグレーの背景 */
+            --color-white: #ffffff; /* 白 */
+            --color-border: #dee2e6; /* 枠線色 */
+            --font-main: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: var(--color-white);
+            color: var(--color-text);
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* メインコンテンツのセクション */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 1. 自己紹介セクション */
+        #profile {
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .profile-box {
+            background-color: var(--color-background);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-icon {
+            /* 画像の代わりとなるCSSボックス/アイコン */
+            width: 120px;
+            height: 120px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+        }
+
+        .profile-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .profile-box p {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* 2. 学生時代に力を入れたこと（ガクチカ）セクション */
+        #gaku-chika {
+            background-color: var(--color-background);
+        }
+
+        .gaku-chika-content {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .gaku-chika-content h3 {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--color-primary);
+            padding-left: 10px;
+        }
+
+        /* ガクチカの本文 (pタグ) のスタイル */
+        #gaku-chika .gaku-chika-content p {
+            font-size: 1rem;
+            text-align: justify;
+            margin-bottom: 1.5rem; /* 段落間のスペースを確保 */
+        }
+        
+        #gaku-chika .gaku-chika-content p:last-of-type {
+            margin-bottom: 0; /* 最後の段落は下マージンなし */
+        }
+
+        .gaku-chika-points {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .point-card {
+            background-color: var(--color-white);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .point-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .point-card i {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .point-card p {
+            font-weight: 500;
+        }
+
+        /* 3. フッター */
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* レスポンシブデザイン (モバイルファースト) */
+        /* ナビゲーションをモバイルで非表示に（今回はシンプルにするため） */
+        header nav {
+            display: none;
+        }
+
+        /* 768px以上の画面サイズ (タブレット・デスクトップ) */
+        @media (min-width: 768px) {
+            header .container {
+                /* デスクトップではナビゲーションを表示 */
+                display: flex;
+            }
+
+            header nav {
+                display: block;
+            }
+
+            section {
+                padding: 100px 0;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-box h2 {
+                font-size: 3rem;
+            }
+
+            #gaku-chika .gaku-chika-content p {
+                font-size: 1.1rem;
+            }
+
+            /* 768px以上でナビゲーションを配置 */
+            header .container {
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヘッダー -->
+    <header>
+        <div class="container">
+            <div class="logo">My Portfolio</div>
+            <nav>
+                <a href="#profile">自己紹介</a>
+                <a href="#gaku-chika">ガクチカ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. 自己紹介セクション -->
+        <section id="profile">
+            <div class="container">
+                <h2 class="section-title">自己紹介</h2>
+                <div class="profile-box">
+                    <div class="profile-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h2>鈴木　翔太 (Shota Suzuki)</h2>
+                    <p>所属: 日本大学 理工学部 応用情報工学科</p>
+                    <p>情報工学とWeb技術を熱心に学んでいます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 学生時代に力を入れたこと（ガクチカ）セクション -->
+        <section id="gaku-chika">
+            <div class="container">
+                <h2 class="section-title">学生時代に力を入れたこと</h2>
+                <div class="gaku-chika-content">
+                    <h3>ソフトテニス部での課題克服と目標達成</h3>
+                    
+                    <!-- アスタリスクを削除し、<strong>タグによる強調表示に置き換えました -->
+                    <p>
+                        私が学生時代に最も力を入れたのは、ソフトテニス部での活動で、特に<strong>ペアとの連携不足により試合中のミスが多発するという課題を克服</strong>し、<strong>安定したパフォーマンスで試合に勝つ</strong>ことを目指しました。
+                    </p>
+                    <p>
+                        この目標達成のため、私はミスが発生した時だけでなく得点時や相手のミス時も含め、<strong>積極的にポジティブな声かけ</strong>をするよう意識的に取り組みました。さらに、練習後には必ず<strong>相互フィードバックの時間</strong>を設け、相互理解を深めました。
+                    </p>
+                    <p>
+                        この主体的な行動の結果、試合中の無駄なミスが<strong>半減</strong>し、ペアリングの<strong>信頼度が向上</strong>したことで、<strong>県大会ベスト16を達成</strong>できました。これにより、<strong>課題に対し自ら働きかけ、周囲と連携して解決に導く力</strong>を培うことができました。
+                    </p>
+                    
+                    <div class="gaku-chika-points">
+                        <div class="point-card">
+                            <i class="fas fa-bullseye"></i>
+                            <p>目標設定と主体的な行動</p>
+                        </div>
+                        <div class="point-card">
+                            <i class="fas fa-handshake"></i>
+                            <p>コミュニケーションと連携</p>
+                        </div>
+                        <div class="point-card">
+                            <i class="fas fa-chart-line"></i>
+                            <p>パフォーマンスの改善と成果</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. フッター -->
+    <footer>
+        <div class="container">
+            &copy; 2025 Shota Suzuki | My Portfolio
+        </div>
+    </footer>
+
+</body>
+</html>
