@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio | 鈴木 翔太</title>
-    <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts - Noto Sans JP -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* CSSリセットと共通スタイル */
         :root {
-            --color-primary: #007bff; /* 鮮やかな青 */
-            --color-secondary: #0056b3; /* 濃い青 (ホバー用) */
-            --color-text: #333333; /* 標準的なテキスト色 */
-            --color-background: #f8f9fa; /* 薄いグレーの背景 */
-            --color-white: #ffffff; /* 白 */
-            --color-border: #dee2e6; /* 枠線色 */
+            /* 変更: 知的でモダンな青緑 */
+            --color-primary: #008c99; 
+            --color-secondary: #006b74; /* 濃い青緑 (ホバー用) */
+            --color-text: #333333; 
+            --color-background: #f4f6f9; /* より自然な薄いグレー */
+            --color-white: #ffffff; 
+            --color-border: #e9ecef; /* 枠線色 */
             --font-main: 'Noto Sans JP', sans-serif;
+            --font-light: 300;
+            --font-regular: 400;
+            --font-medium: 500;
+            --font-bold: 700;
         }
 
         * {
@@ -32,23 +35,23 @@
             font-family: var(--font-main);
             color: var(--color-text);
             background-color: var(--color-background);
-            line-height: 1.6;
+            line-height: 1.7; /* 行間を広げて可読性を向上 */
             scroll-behavior: smooth;
+            font-weight: var(--font-regular);
         }
 
         /* コンテナ */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 20px; /* 左右のパディングを少し増やしました */
         }
 
         /* ヘッダー */
         header {
             background-color: var(--color-white);
-            color: var(--color-text);
-            padding: 15px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 18px 0; /* パディングを調整 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 影を柔らかく */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -61,236 +64,345 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: var(--font-bold);
             color: var(--color-primary);
+            letter-spacing: 0.5px;
         }
 
         nav a {
             color: var(--color-text);
             text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
+            margin-left: 30px; /* スペースを少し広げました */
+            font-weight: var(--font-medium);
             transition: color 0.3s;
+            position: relative;
+            padding-bottom: 3px;
         }
 
         nav a:hover {
             color: var(--color-primary);
         }
+        
+        /* ホバーアンダーライン */
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
 
         /* メインコンテンツのセクション */
         section {
-            padding: 80px 0;
+            padding: 100px 0; /* セクションの上下パディングを増やしました */
         }
+        
+        /* 交互背景色 */
+        #profile { background-color: var(--color-white); }
+        #gaku-chika { background-color: var(--color-background); }
+        #skills { background-color: var(--color-white); }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            font-weight: 700;
-            color: var(--color-primary);
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            font-weight: var(--font-light); /* 太さを変えて洗練された印象に */
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             position: relative;
-            padding-bottom: 10px;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 1rem;
+            font-weight: var(--font-medium);
+            color: var(--color-primary);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px; /* 太くしました */
             background-color: var(--color-primary);
-            margin: 10px auto 0;
+            margin: 15px auto 0;
             border-radius: 2px;
         }
 
         /* 1. 自己紹介セクション */
-        #profile {
+        .profile-box {
             background-color: var(--color-white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* 影を強調 */
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .profile-box {
-            background-color: var(--color-background);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
         .profile-icon {
-            /* 画像の代わりとなるCSSボックス/アイコン */
-            width: 120px;
-            height: 120px;
+            width: 150px; /* サイズを大きく */
+            height: 150px;
             background-color: var(--color-primary);
             color: var(--color-white);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 20px;
-            font-size: 3rem;
+            margin-bottom: 25px;
+            font-size: 4rem; /* アイコンを大きく */
+            border: 5px solid var(--color-white);
+            box-shadow: 0 0 0 8px var(--color-border); /* 外側のリング */
         }
 
         .profile-box h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            margin-bottom: 5px;
+            color: var(--color-text);
+            font-weight: var(--font-bold);
+        }
+        
+        .profile-box .position {
+            font-size: 1.3rem;
             color: var(--color-primary);
+            font-weight: var(--font-medium);
+            margin-bottom: 20px;
         }
 
         .profile-box p {
             font-size: 1.1rem;
-            margin-bottom: 5px;
+            color: #555;
+            margin-top: 5px;
+        }
+        
+        .profile-box p:last-of-type {
+            max-width: 600px;
+            line-height: 1.8;
         }
 
-        /* 2. 学生時代に力を入れたこと（ガクチカ）セクション */
-        #gaku-chika {
-            background-color: var(--color-background);
-        }
 
+        /* 2. ガクチカセクション */
         .gaku-chika-content {
             background-color: var(--color-white);
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 8px solid var(--color-primary); /* 左側に縦線 */
         }
 
         .gaku-chika-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--color-secondary);
-            margin-bottom: 20px;
-            border-left: 5px solid var(--color-primary);
-            padding-left: 10px;
+            margin-bottom: 25px;
+            font-weight: var(--font-bold);
         }
 
-        /* ガクチカの本文 (pタグ) のスタイル */
         #gaku-chika .gaku-chika-content p {
-            font-size: 1rem;
-            text-align: justify;
-            margin-bottom: 1.5rem; /* 段落間のスペースを確保 */
+            font-size: 1.05rem;
+            text-align: left;
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
         }
         
-        #gaku-chika .gaku-chika-content p:last-of-type {
-            margin-bottom: 0; /* 最後の段落は下マージンなし */
+        #gaku-chika .gaku-chika-content strong {
+            color: var(--color-primary); /* 強調色を変更 */
+            font-weight: var(--font-bold);
         }
 
         .gaku-chika-points {
-            margin-top: 30px;
+            margin-top: 40px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .point-card {
-            background-color: var(--color-white);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
+            background-color: var(--color-background);
+            padding: 25px;
+            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid var(--color-primary);
+            transition: all 0.3s;
         }
         
         .point-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .point-card i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--color-primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .point-card p {
-            font-weight: 500;
+            font-weight: var(--font-medium);
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+        
+        /* 3. スキルセクション */
+        .skills-list {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* 3. フッター */
-        footer {
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: var(--font-medium);
+        }
+
+        .skill-bar {
+            background-color: var(--color-border);
+            border-radius: 5px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
             background-color: var(--color-primary);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+            /* 動作確認のためにアニメーション初期値を設定 */
+            width: 0; 
+        }
+        
+        /* スキルレベルの幅 */
+        .html-css { width: 90%; }
+        .javascript { width: 75%; }
+        .database { width: 60%; }
+        .java { width: 45%; }
+
+
+        /* 4. フッター */
+        footer {
+            background-color: var(--color-secondary); /* 濃い方の色を使用 */
             color: var(--color-white);
             text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
+            padding: 25px 0;
+            font-size: 1rem;
         }
 
-        /* レスポンシブデザイン (モバイルファースト) */
-        /* ナビゲーションをモバイルで非表示に（今回はシンプルにするため） */
-        header nav {
+        /* モバイルナビゲーション（非表示/構造のみ） */
+        .menu-toggle {
             display: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+        
+        /* レスポンシブデザイン (モバイルファースト) */
+        @media (max-width: 767px) {
+             header nav {
+                display: none; /* シンプルにするためナビゲーションを非表示 */
+            }
+            
+            .menu-toggle {
+                display: block; /* モバイルでハンバーガーメニューを表示（今回は機能なし） */
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .profile-box {
+                padding: 30px;
+            }
+
+            .profile-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3rem;
+            }
+            
+            .profile-box h2 {
+                font-size: 2rem;
+            }
+            
+            .profile-box .position {
+                font-size: 1.1rem;
+            }
+
+            .gaku-chika-content {
+                padding: 25px;
+            }
+            
+            .gaku-chika-points {
+                grid-template-columns: 1fr;
+            }
+            
+            .point-card {
+                padding: 15px;
+            }
         }
 
         /* 768px以上の画面サイズ (タブレット・デスクトップ) */
         @media (min-width: 768px) {
-            header .container {
-                /* デスクトップではナビゲーションを表示 */
-                display: flex;
-            }
-
             header nav {
                 display: block;
-            }
-
-            section {
-                padding: 100px 0;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .profile-box h2 {
-                font-size: 3rem;
-            }
-
-            #gaku-chika .gaku-chika-content p {
-                font-size: 1.1rem;
-            }
-
-            /* 768px以上でナビゲーションを配置 */
-            header .container {
-                justify-content: space-between;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. ヘッダー -->
     <header>
         <div class="container">
-            <div class="logo">My Portfolio</div>
+            <div class="logo">Shota's Portfolio</div>
             <nav>
                 <a href="#profile">自己紹介</a>
                 <a href="#gaku-chika">ガクチカ</a>
+                <a href="#skills">スキル</a>
             </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
     <main>
-        <!-- 2. 自己紹介セクション -->
         <section id="profile">
             <div class="container">
-                <h2 class="section-title">自己紹介</h2>
+                <h2 class="section-title"><span>About Me</span>自己紹介</h2>
                 <div class="profile-box">
                     <div class="profile-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
+                        <i class="fas fa-terminal"></i> </div>
                     <h2>鈴木　翔太 (Shota Suzuki)</h2>
-                    <p>所属: 日本大学 理工学部 応用情報工学科</p>
-                    <p>情報工学とWeb技術を熱心に学んでいます。</p>
+                    <p class="position">日本大学 理工学部 応用情報工学科</p>
+                    <p>
+                        情報工学の分野で、特にWebアプリケーション開発とデータサイエンスに関心を持ち、日々学習に励んでいます。
+                        課題発見能力とチームでの協調性を強みとしており、技術とコミュニケーションを通じて社会に貢献したいと考えています。
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. 学生時代に力を入れたこと（ガクチカ）セクション -->
         <section id="gaku-chika">
             <div class="container">
-                <h2 class="section-title">学生時代に力を入れたこと</h2>
+                <h2 class="section-title"><span>My Challenge</span>学生時代に力を入れたこと</h2>
                 <div class="gaku-chika-content">
                     <h3>ソフトテニス部での課題克服と目標達成</h3>
                     
-                    <!-- アスタリスクを削除し、<strong>タグによる強調表示に置き換えました -->
                     <p>
                         私が学生時代に最も力を入れたのは、ソフトテニス部での活動で、特に<strong>ペアとの連携不足により試合中のミスが多発するという課題を克服</strong>し、<strong>安定したパフォーマンスで試合に勝つ</strong>ことを目指しました。
                     </p>
@@ -298,32 +410,77 @@
                         この目標達成のため、私はミスが発生した時だけでなく得点時や相手のミス時も含め、<strong>積極的にポジティブな声かけ</strong>をするよう意識的に取り組みました。さらに、練習後には必ず<strong>相互フィードバックの時間</strong>を設け、相互理解を深めました。
                     </p>
                     <p>
-                        この主体的な行動の結果、試合中の無駄なミスが<strong>半減</strong>し、ペアリングの<strong>信頼度が向上</strong>したことで、<strong>県大会ベスト16を達成</strong>できました。これにより、<strong>課題に対し自ら働きかけ、周囲と連携して解決に導く力</strong>を培うことができました。
+                        この主体的な行動の結果、試合中の無駄なミスが**半減**し、ペアリングの**信頼度が向上**したことで、**県大会ベスト16を達成**できました。これにより、**課題に対し自ら働きかけ、周囲と連携して解決に導く力**を培うことができました。
                     </p>
                     
                     <div class="gaku-chika-points">
                         <div class="point-card">
-                            <i class="fas fa-bullseye"></i>
-                            <p>目標設定と主体的な行動</p>
+                            <i class="fas fa-lightbulb"></i> <p>目標設定と主体的な行動</p>
                         </div>
                         <div class="point-card">
-                            <i class="fas fa-handshake"></i>
-                            <p>コミュニケーションと連携</p>
+                            <i class="fas fa-comments"></i> <p>コミュニケーションと連携</p>
                         </div>
                         <div class="point-card">
-                            <i class="fas fa-chart-line"></i>
-                            <p>パフォーマンスの改善と成果</p>
+                            <i class="fas fa-trophy"></i> <p>成果達成へのコミットメント</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title"><span>My Expertise</span>テクニカルスキル</h2>
+                <div class="skills-list">
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>HTML / CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level html-css"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript (ES6+) / React</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level javascript"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Database (SQL)</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level database"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Java / Python</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level java"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- 4. フッター -->
     <footer>
         <div class="container">
-            &copy; 2025 Shota Suzuki | My Portfolio
+            &copy; 2025 Shota Suzuki | All Rights Reserved.
         </div>
     </footer>
 
