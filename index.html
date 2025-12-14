@@ -117,13 +117,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
-            opacity: 0; /* 初期状態は非表示 */
-            transform: translateY(20px); /* 下から少し移動した状態 */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* アニメーション設定 */
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
         }
 
         .section-title.fade-in {
-            opacity: 1; /* アニメーション後 */
+            opacity: 1; 
             transform: translateY(0);
         }
 
@@ -158,9 +158,9 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0; /* 初期状態は非表示 */
+            opacity: 0; 
             transform: translateY(20px);
-            transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s; /* 少し遅れてアニメーション */
+            transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s; 
         }
         
         .profile-box.fade-in {
@@ -168,27 +168,37 @@
             transform: translateY(0);
         }
 
+        /* アイコンのCSSを変更 */
         .profile-icon {
             width: 150px; 
             height: 150px;
-            background-color: var(--color-primary);
-            color: var(--color-white);
+            /* background-color: var(--color-primary); 
+            color: var(--color-white); 
+            font-size: 4rem; */
+            
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
-            font-size: 4rem; 
             border: 5px solid var(--color-white);
             box-shadow: 0 0 0 8px var(--color-border); 
-            animation: iconPulse 2s infinite ease-in-out; /* アイコンに脈打つアニメーション */
+            overflow: hidden; /* 画像がはみ出ないように */
+            /* animation: iconPulse 2s infinite ease-in-out; */ /* アニメーションを削除 */
+        }
+        
+        /* 画像がコンテナ内で収まるように */
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* コンテナ全体を覆う */
         }
 
-        @keyframes iconPulse {
+        /* @keyframes iconPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
-        }
+        } */
 
 
         .profile-box h2 {
@@ -266,12 +276,11 @@
             border-radius: 10px;
             text-align: center;
             border-bottom: 4px solid var(--color-primary);
-            transition: all 0.3s ease-in-out; /* ホバーアニメーションを滑らかに */
+            transition: all 0.3s ease-in-out; 
             opacity: 0;
             transform: translateY(20px);
         }
         
-        /* point-cardのアニメーションディレイ */
         .gaku-chika-points.fade-in .point-card:nth-child(1) { transition-delay: 0.4s; }
         .gaku-chika-points.fade-in .point-card:nth-child(2) { transition-delay: 0.5s; }
         .gaku-chika-points.fade-in .point-card:nth-child(3) { transition-delay: 0.6s; }
@@ -282,8 +291,8 @@
         }
 
         .point-card:hover {
-            transform: translateY(-10px) scale(1.02); /* ホバー時の動きを強調 */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* 影を強調 */
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); 
         }
 
         .point-card i {
@@ -334,11 +343,10 @@
             height: 100%;
             background-color: var(--color-primary);
             border-radius: 5px;
-            width: 0; /* 初期状態は幅0 */
-            transition: width 1.5s ease-out; /* JavaScriptでactiveクラスが付与された時にアニメーション */
+            width: 0; 
+            transition: width 1.5s ease-out; 
         }
         
-        /* スキルレベルの幅 (JavaScriptで.activeクラスが付与されたときに適用) */
         .skill-level.html-css.active { width: 90%; }
         .skill-level.javascript.active { width: 75%; }
         .skill-level.database.active { width: 60%; }
@@ -383,7 +391,6 @@
             .profile-icon {
                 width: 100px;
                 height: 100px;
-                font-size: 3rem;
             }
             
             .profile-box h2 {
@@ -435,7 +442,8 @@
                 <h2 class="section-title"><span>About Me</span>自己紹介</h2>
                 <div class="profile-box">
                     <div class="profile-icon">
-                        <i class="fas fa-terminal"></i> </div>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDC8T-6_7wMK9PWpXbRm7FUU2iMMhvAE0YFYX9RcA4PXLGNDJJFW6anUa4tBtIj42AFVQFwI0BN7i4gWNu9ZGcgE-tdx6dbKzvrORIVB9AEyjjdTDkKG4StslIvz8wkHiTiEKORptbXB54/s1600/computer_screen_programming.png"プロフィールアイコン">
+                    </div>
                     <h2>鈴木　翔太 (Shota Suzuki)</h2>
                     <p class="position">日本大学 理工学部 応用情報工学科</p>
                     <p>
@@ -535,15 +543,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // セクションタイトル、プロフィールボックス、ガクチカコンテンツ、スキルリスト、ポイントカードのアニメーション
             const animateElements = document.querySelectorAll(
                 '.section-title, .profile-box, .gaku-chika-content, .skills-list, .point-card'
             );
 
             const observerOptions = {
-                root: null, // ビューポートをルートとする
+                root: null, 
                 rootMargin: '0px',
-                threshold: 0.1 // 要素が10%表示されたらコールバックを実行
+                threshold: 0.1 
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
@@ -551,14 +558,12 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('fade-in');
                         
-                        // スキルバーのアニメーション
                         if (entry.target.classList.contains('skills-list')) {
                             const skillLevels = entry.target.querySelectorAll('.skill-level');
                             skillLevels.forEach(skillLevel => {
                                 skillLevel.classList.add('active');
                             });
                         }
-                        // point-cardのアニメーション（親要素がfade-inになったら子要素も）
                         if (entry.target.classList.contains('gaku-chika-points')) {
                             const pointCards = entry.target.querySelectorAll('.point-card');
                              pointCards.forEach(card => {
@@ -566,7 +571,7 @@
                             });
                         }
 
-                        observer.unobserve(entry.target); // 一度アニメーションしたら監視を停止
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -575,7 +580,6 @@
                 observer.observe(element);
             });
             
-            // 例外的にgaku-chika-pointsも直接監視対象に追加
             const gakuChikaPoints = document.querySelector('.gaku-chika-points');
             if (gakuChikaPoints) {
                 observer.observe(gakuChikaPoints);
